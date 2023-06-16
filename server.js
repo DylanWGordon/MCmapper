@@ -4,6 +4,7 @@ import postgres from "postgres";
 const app = express();
 dotenv.config();
 const sql = postgres("postgres://localhost/example_db")
+const PORT = process.env.PORT;
 
 // app.use(express.static("public"));
 
