@@ -1,5 +1,5 @@
 import express from "express";
-import postgres from "postgres";
+import postgres from "pg";
 
 const app = express();
 dotenv.config();
