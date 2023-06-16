@@ -28,6 +28,23 @@ app.get("/", async (req, res) => {
     }
 })
 
+//get one poi by id
+app.get(`${URL}/:id`, async (req, res) => {
+    const { id } = req.params;
+    if (isNaN(Number.isInteger(id))) {
+        res.status(400).send('Bad Request')
+    } else {
+        try {
+            const result = await client.query('SELECT * FROM poi WHERE poi_id = $1', [id])
+            res.json(result.rows)
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+            console.error('Internal Server Error')
+        }
+    }
+})
+
 
 
 app.listen(PORT, () => {
