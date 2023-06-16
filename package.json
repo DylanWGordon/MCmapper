@@ -1,5 +1,5 @@
 {
-  "type": "Module",
+  "type": "module",
   "name": "mcmapper",
   "version": "1.0.0",
   "description": "",
