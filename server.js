@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 
 //get all poi
-app.get("/", async (req, res) => {
+app.get("/poi", async (req, res) => {
     try {
         const result = await client.query(`SELECT * FROM poi`)
         res.json(result.rows)
@@ -29,7 +29,7 @@ app.get("/", async (req, res) => {
 })
 
 //get one poi by id
-app.get(`${URL}/:id`, async (req, res) => {
+app.get(`/poi/:id`, async (req, res) => {
     const { id } = req.params;
     if (isNaN(Number.isInteger(id))) {
         res.status(400).send('Bad Request')
