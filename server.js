@@ -7,7 +7,7 @@ dotenv.config();
 const PORT = process.env.PORT;
 const dburl = process.env.DATABASE_URL;
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 
 
