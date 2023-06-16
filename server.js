@@ -6,7 +6,6 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT;
 const dburl = process.env.DATABASE_URL;
-const sql = postgres(`"${dburl}"`)
 
 // app.use(express.static("public"));
 
