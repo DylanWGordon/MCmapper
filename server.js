@@ -98,12 +98,12 @@ app.patch('/poi/:id', async (req, res) => {
                 res.status(400).type('text/plain').send('Bad Request');
                 return;
             }
+        } if (i < keyList.length - 1) {// for each key found in patchdata,
+            //  update the preexisting data's value and separate with commas
+            inputs += keyList[i] + ' = ' + patchData[keyList[i]] + ',';
+        } else { //last item, no comma
+            inputs += keyList[i] + ' = ' + patchData[keyList[i]]
         }
-    } if (i < keyList.length - 1) {// for each key found in patchdata,
-        //  update the preexisting data's value and separate with commas
-        inputs += keyList[i] + ' = ' + patchData[keyList[i]] + ',';
-    } else { //last item, no comma
-        inputs += keyList[i] + ' = ' + patchData[keyList[i]]
     }
     sqlString += inputs;
     sqlString += ' WHERE id = ' + '\'' + id + '\' RETURNING *';
