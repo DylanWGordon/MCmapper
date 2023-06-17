@@ -109,9 +109,9 @@ app.patch('/poi/:id', (req, res) => {
             }
         } if (i < keyList.length - 1) {// for each key found in patchdata,
             //  update the preexisting data's value and separate with commas
-            inputs += keyList[i] + ' = ' + updatePetInfo[keyList[i]] + ',';
+            inputs += keyList[i] + ' = ' + patchData[keyList[i]] + ',';
         } else { //last item, no comma
-            inputs += keyList[i] + ' = ' + updatePetInfo[keyList[i]]
+            inputs += keyList[i] + ' = ' + patchData[keyList[i]]
         }
     }
     sqlString += inputs;
