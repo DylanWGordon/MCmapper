@@ -121,7 +121,7 @@ app.patch('/poi/:id', (req, res) => {
         if (result.rowCount === '0') {
             res.status(404).send('Not Found')
         } else {
-            res.json(result.rows)
+            res.json(result)
         }
     } catch (err) {
         console.error(err);
