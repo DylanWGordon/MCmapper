@@ -87,7 +87,7 @@ app.patch('/poi/:id', (req, res) => {
         res.status(400).type('text/plain').send('Bad Request');
     }
     const keyList = Object.keys(patchData)
-    let sqlString = "UPDATE poi SET";
+    let sqlString = 'UPDATE poi SET ';
     let inputs = '';
     for (let i = 0; i < keyList.length; i++) {
         if (patchData[keyList[i]] === undefined || patchData[keyList[i]] === '') {
