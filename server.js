@@ -35,7 +35,7 @@ app.get(`/poi/:id`, async (req, res) => {
         res.status(400).send('Bad Request')
     } else {
         try {
-            const result = await client.query('SELECT * FROM poi WHERE poi_id = $1', [id])
+            const result = await client.query('SELECT * FROM poi WHERE id = $1', [id])
             res.json(result.rows)
         } catch (err) {
             console.error(err);
@@ -49,12 +49,12 @@ app.get(`/poi/:id`, async (req, res) => {
 app.post('/poi', async (req, res) => {
 
     try {
-        const { npName, npBio, npKind, npComm } = req.body;
-        const x = req.body.npCoord[0]
-        const y = req.body.npCoord[1]
-        const z = req.body.npCoord[2]
+        const { name, biome, kind, comments } = req.body;
+        const x = req.body.coordinates[0]
+        const y = req.body.coordinates[1]
+        const z = req.body.coordinates[2]
 
-        const result = await client.query('INSERT INTO poi(poi_name, biome, kind, coordinates, user_comments) VALUES ($1, $2, $3, ST_MakePoint($4, $5, $6), $7) RETURNING *', [npName, npBio, npKind, x, y, z, npComm]);
+        const result = await client.query('INSERT INTO poi(name, biome, kind, coordinates, comments) VALUES ($1, $2, $3, ST_MakePoint($4, $5, $6), $7) RETURNING *', [name, biome, kind, x, y, z, comments]);
         res.json(result.rows[0])
     } catch (err) {
         console.error(err);
@@ -69,7 +69,7 @@ app.delete(`/poi/:id`, async (req, res) => {
         res.status(400).send('Bad Request')
     } else {
         try {
-            const result = await client.query('DELETE FROM poi WHERE poi_id = $1 RETURNING *', [id])
+            const result = await client.query('DELETE FROM poi WHERE id = $1 RETURNING *', [id])
             res.json(result.rows[0])
         } catch (err) {
             console.error(err);
@@ -94,7 +94,7 @@ app.patch('/poi/:id', async (req, res) => {
             res.status(400).send('Bad request');
             return;
         }
-        if (keyList[i] !== 'npCoord') {
+        if (keyList[i] !== 'coordinates') {
             patchData[keyList[i]] = '\'' + patchData[keyList[i]] + '\'';
         } else { //
             if (!Array.isArray(patchData[keyList[i]])) {
