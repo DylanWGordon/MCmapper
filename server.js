@@ -36,7 +36,7 @@ app.get(`/poi/:id`, async (req, res) => {
     } else {
         try {
             const result = await client.query('SELECT name, biome, kind, x, y, z, comments FROM poi WHERE id = $1', [id])
-            res.json(result.rows)
+            res.json(result)
         } catch (err) {
             console.error(err);
             res.status(500).send('Internal Server Error');
@@ -109,7 +109,6 @@ app.patch('/poi/:id', async (req, res) => {
     sqlString += ' WHERE id = ' + '\'' + id + '\' RETURNING *';
     try {
         const result = await client.query(sqlString);
-        console.log(result)
         if (result.rowCount === '0') {
             res.status(404).send('Not Found')
         } else {
