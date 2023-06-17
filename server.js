@@ -62,13 +62,14 @@ app.delete(`/poi/:id`, async (req, res) => {
 })
 
 app.post('/poi', async (req, res) => {
-    const npCoord = `ST_MakePoint(${req.body.npCoord[0]} ${req.body.npCoord[1]} ${req.body.npCoord[2]})`
-    console.log(npCoord)
+
     try {
         const { npName, npBio, npKind, npComm } = req.body;
-        const npCoord = `ST_MakePoint(${req.body.npCoord[0]}, ${req.body.npCoord[1]}, ${req.body.npCoord[2]})`
+        const x = req.body.npCoord[0]
+        const y = req.body.npCoord[1]
+        const z = req.body.npCoord[2]
 
-        const result = await client.query('INSERT INTO poi(poi_name, biome, kind, coordinates, user_comments) VALUES ($1, $2, $3, $4, $5)', [npName, npBio, npKind, npCoord, npComm]);
+        const result = await client.query('INSERT INTO poi(poi_name, biome, kind, coordinates, user_comments) VALUES ($1, $2, $3, ST_MakePoint($4, $5, $6), $7)', [npName, npBio, npKind, x, y, z, npComm]);
         console.log(result)
         res.json(result.rows)
     } catch (err) {
