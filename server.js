@@ -62,7 +62,7 @@ app.delete(`/poi/:id`, async (req, res) => {
 })
 
 app.post('/poi', async (req, res) => {
-    const npCoord = `ST_MakePoint(${req.body.npCoord[0]}, ${req.body.npCoord[1]}, ${req.body.npCoord[2]})`
+    const npCoord = `ST_MakePoint(${req.body.npCoord[0]} ${req.body.npCoord[1]} ${req.body.npCoord[2]})`
     console.log(npCoord)
     try {
         const { npName, npBio, npKind, npComm } = req.body;
