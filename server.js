@@ -63,8 +63,11 @@ app.delete(`/poi/:id`, async (req, res) => {
 
 app.post('/poi', async (req, res) => {
     try {
-        const { npName, npBio, npKind, npCoord, npComm } = req.body;
-        const result = await client.query('INSERT INTO poi(poi_name, biome, kind, coordinates, user_comments) VALUES ($1, $2, $3, $4, $5)', [npName, npBio, npKind, npCoord, npComm])
+        const { npName, npBio, npKind, npComm } = req.body;
+        const npCoord = ST_MakePoint(parseInt(req.body.npCoord))
+        const result = await client.query('INSERT INTO poi(poi_name, biome, kind, coordinates, user_comments) VALUES ($1, $2, $3, $4, $5)', [npName, npBio, npKind, npCoord, npComm]);
+        console.log(result)
+        res.json(result.rows)
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal Server Error')
