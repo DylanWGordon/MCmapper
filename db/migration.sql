@@ -10,11 +10,11 @@ CREATE TABLE worlds(
 DROP TABLE IF EXISTS poi;
 CREATE TABLE poi(
     id SERIAL,
-    name TEXT,
+    name VARCHAR(40),
     biome TEXT NOT NULL,
     kind TEXT NOT NULL,
     x INTEGER NOT NULL,
     y INTEGER NOT NULL,
     z INTEGER NOT NULL,
-    comments TEXT
+    comments VARCHAR(255)
 );
