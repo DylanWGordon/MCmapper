@@ -52,7 +52,7 @@ app.delete(`/poi/:id`, async (req, res) => {
     } else {
         try {
             const result = await client.query('DELETE FROM poi WHERE poi_id = $1 RETURNING *', [id])
-            res.json(result)
+            res.json(result.rows[0])
         } catch (err) {
             console.error(err);
             res.status(500).send('Internal Server Error');
@@ -70,7 +70,7 @@ app.post('/poi', async (req, res) => {
         const z = req.body.npCoord[2]
 
         const result = await client.query('INSERT INTO poi(poi_name, biome, kind, coordinates, user_comments) VALUES ($1, $2, $3, ST_MakePoint($4, $5, $6), $7) RETURNING *', [npName, npBio, npKind, x, y, z, npComm]);
-        res.json(result)
+        res.json(result.rows[0])
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal Server Error')
