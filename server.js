@@ -19,7 +19,7 @@ app.use(express.static("public"));
 //get all poi Rv1.3
 app.get("/poi", async (req, res) => {
     try {
-        const result = await client.query(`select name, biome, kind, ST_X(coordinates) as x, ST_Y(coordinates) as y, ST_Z(coordinates) as z, comments FROM poi`)
+        const result = await client.query(`select name, biome, kind, x, y, z, comments FROM poi`)
         res.json(result.rows)
     } catch (err) {
         console.error(err);
@@ -35,7 +35,7 @@ app.get(`/poi/:id`, async (req, res) => {
         res.status(400).send('Bad Request')
     } else {
         try {
-            const result = await client.query('SELECT * FROM poi WHERE id = $1', [id])
+            const result = await client.query('SELECT name, biome, kind, x, y, z, comments FROM poi WHERE id = $1', [id])
             res.json(result.rows)
         } catch (err) {
             console.error(err);
@@ -49,12 +49,9 @@ app.get(`/poi/:id`, async (req, res) => {
 app.post('/poi', async (req, res) => {
 
     try {
-        const { name, biome, kind, comments } = req.body;
-        const x = req.body.coordinates[0]
-        const y = req.body.coordinates[1]
-        const z = req.body.coordinates[2]
+        const { name, biome, kind, x, y, z, comments } = req.body;
 
-        const result = await client.query('INSERT INTO poi(name, biome, kind, coordinates, comments) VALUES ($1, $2, $3, ST_MakePoint($4, $5, $6), $7) RETURNING *', [name, biome, kind, x, y, z, comments]);
+        const result = await client.query('INSERT INTO poi(name, biome, kind, x, y, z, comments) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [name, biome, kind, x, y, z, comments]);
         res.json(result.rows[0])
     } catch (err) {
         console.error(err);
@@ -94,25 +91,19 @@ app.patch('/poi/:id', async (req, res) => {
             res.status(400).send('Bad request');
             return;
         }
-        if (keyList[i] !== 'coordinates') {
+        if (keyList[i] !== 'x' || 'y' || 'z') {
             patchData[keyList[i]] = '\'' + patchData[keyList[i]] + '\'';
         } else { //
-            if (!Array.isArray(patchData[keyList[i]])) {
+            if (isNaN(parseInt(patchData[keyList[i]]))) {
                 res.status(400).type('text/plain').send('Bad Request');
                 return;
             }
-            for (let elem of patchData[keyList[i]]) {
-                if (isNaN(parseInt(patchData[keyList[i]]))) {
-                    res.status(400).type('text/plain').send('Bad Request');
-                    return;
-                }
-            }
-        } if (i < keyList.length - 1) {// for each key found in patchdata,
-            //  update the preexisting data's value and separate with commas
-            inputs += keyList[i] + ' = ' + patchData[keyList[i]] + ',';
-        } else { //last item, no comma
-            inputs += keyList[i] + ' = ' + patchData[keyList[i]]
         }
+    } if (i < keyList.length - 1) {// for each key found in patchdata,
+        //  update the preexisting data's value and separate with commas
+        inputs += keyList[i] + ' = ' + patchData[keyList[i]] + ',';
+    } else { //last item, no comma
+        inputs += keyList[i] + ' = ' + patchData[keyList[i]]
     }
     sqlString += inputs;
     sqlString += ' WHERE id = ' + '\'' + id + '\' RETURNING *';

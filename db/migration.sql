@@ -13,6 +13,8 @@ CREATE TABLE poi(
     name TEXT,
     biome TEXT NOT NULL,
     kind TEXT NOT NULL,
-    coordinates GEOMETRY(PointZ) NOT NULL,
+    x INTEGER NOT NULL,
+    y INTEGER NOT NULL,
+    z INTEGER NOT NULL,
     comments TEXT
 );
