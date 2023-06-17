@@ -118,6 +118,7 @@ app.patch('/poi/:id', (req, res) => {
     sqlString += ' WHERE poi_id = ' + '\'' + id + 'RETURNING *\'';
     try {
         const result = sqlString;
+        console.log(result)
         if (result.rowCount === '0') {
             res.status(404).send('Not Found')
         } else {
