@@ -115,7 +115,7 @@ app.patch('/poi/:id', async (req, res) => {
         }
     }
     sqlString += inputs;
-    sqlString += ' WHERE poi_id = ' + '\'' + id + '\' RETURNING *';
+    sqlString += ' WHERE id = ' + '\'' + id + '\' RETURNING *';
     try {
         const result = await client.query(sqlString);
         console.log(result)
