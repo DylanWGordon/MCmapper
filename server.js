@@ -61,6 +61,16 @@ app.delete(`/poi/:id`, async (req, res) => {
     }
 })
 
+app.post('/poi', async (req, res) => {
+    try {
+        const { npName, npBio, npKind, npCoord, npComm } = req.body;
+        const result = await client.query('INSERT INTO poi(poi_name, biome, kind, coordinates, user_comments) VALUES ($1, $2, $3, $4, $5)', [npName, npBio, npKind, npCoord, npComm])
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error')
+    }
+})
+
 
 
 app.listen(PORT, () => {
