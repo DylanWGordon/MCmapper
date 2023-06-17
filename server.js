@@ -53,6 +53,7 @@ app.post('/poi', async (req, res) => {
 
         const result = await client.query('INSERT INTO poi(name, biome, kind, x, y, z, comments) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [name, biome, kind, x, y, z, comments]);
         res.json(result.rows[0])
+
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal Server Error')
