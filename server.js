@@ -80,7 +80,7 @@ app.delete(`/poi/:id`, async (req, res) => {
 })
 
 //update one poi Uv1.0)
-app.patch('/poi/:id', (req, res) => {
+app.patch('/poi/:id', async (req, res) => {
     const { id } = req.params;
     const patchData = req.body;
     if (isNaN(parseInt(id))) {
@@ -117,7 +117,7 @@ app.patch('/poi/:id', (req, res) => {
     sqlString += inputs;
     sqlString += ' WHERE poi_id = ' + '\'' + id + '\' RETURNING *';
     try {
-        const result = sqlString;
+        const result = await client.query(sqlString);
         console.log(result)
         if (result.rowCount === '0') {
             res.status(404).send('Not Found')
