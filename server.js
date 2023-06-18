@@ -1,5 +1,6 @@
 import express from "express";
-import pkg from "pg";
+import postgres from "postgres";
+import pkg from 'pg'
 const { Pool } = pkg
 import dotenv from 'dotenv'
 

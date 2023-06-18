@@ -1,4 +1,4 @@
-const API_URL = 'https://corsproxy.io/?https://mcmap-webservice.onrender.com';
+// const API_URL = 'https://mcmap-webservice.onrender.com';
 
 function showHiddenEle(ele) {
     if (ele.style.display !== 'flex') {
@@ -6,12 +6,14 @@ function showHiddenEle(ele) {
     }
 }
 
-async function deleteEle(ele) {
-    console.log(ele)
-    // const response = await fetch(`${API_URL}/poi/${id}`, {
-    //     method: "DELETE"
-    // })
-    // console.log(response)
+async function deleteEle(ele, id) {
+    const parent = ele.parentElement;
+    console.log(id)
+    const response = await fetch(`/poi/${id}`, {
+        method: "DELETE"
+    })
+    parent.removeChild(ele)
+    console.log(response)
 }
 
 //show addpoi form
@@ -24,7 +26,7 @@ poiShow.addEventListener('click', () => {
 
 //update data func
 async function loader() {
-    const fetchPromise = await fetch(`${API_URL}/poi`);
+    const fetchPromise = await fetch(`/poi`);
     const response = await fetchPromise.json()
     return response
 }
@@ -33,21 +35,32 @@ async function loader() {
 async function populateDiv() {
     const tableDiv = document.getElementById('populateMe');
     const data = await loader()
-    console.log(data)
     tableDiv.innerHTML = '';
     for (let i = 0; i < data.length; i++) {
 
         const entryDiv = document.createElement('div')
+        entryDiv.classList.add('entryCard');
         const entry = document.createElement('p')
-        entry.textContent = JSON.stringify(data[i]);
+        const id = data[i]['id']
+        entry.innerHTML = `<h2>${data[i].name}</h2>
+        <p>Biome: ${data[i].biome}</p>
+        <p>Structure: ${data[i].kind}</p>
+        <p>Coordinates: ${data[i].x} ${data[i].y} ${data[i].z}</p>
+        <p>Comments: <br>
+        ${data[i].comments}</p>
+        `;
+
+
         entryDiv.append(entry)
         tableDiv.append(entryDiv)
         const deleteEntryBtn = document.createElement('button');
         deleteEntryBtn.classList.add('deleteBtn');
-        deleteEntryBtn.addEventListener('click', async () => {
-            await deleteEle(entryDiv)
+        deleteEntryBtn.addEventListener('click', () => {
+            deleteEle(entryDiv, id)
+            loader();
+            populateDiv()
         })
-        tableDiv.append(deleteEntryBtn)
+        entryDiv.append(deleteEntryBtn)
     }
 }
 populateDiv()
@@ -74,7 +87,7 @@ clickme.addEventListener('click', async () => {
     }
     //Function to post
     async function postData() {
-        const response = await fetch(`${API_URL}/poi`, {
+        const response = await fetch(`/poi`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

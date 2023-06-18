@@ -2,6 +2,11 @@ div.addform {
     display: none;
 }
 
+div.entryCard {
+    border: 1px solid black;
+    padding: 1.3em;
+}
+
 /* div#addworld {
     display: flex;
 } */
