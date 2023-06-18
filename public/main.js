@@ -1,7 +1,7 @@
 // const API_URL = 'https://mcmap-webservice.onrender.com';
 
 
-let updateMe = 0
+let activeId = 0
 function showHiddenEle(ele) {
     if (ele.style.display !== 'flex') {
         ele.style.display = 'flex'
@@ -19,7 +19,7 @@ async function deleteEle(ele, id) {
 }
 
 function updateEle(entry, id) {
-    for (let key in data[i]) {
+    for (let key in data[activeId]) {
         const uName = document.getElementById('updatepoiname');
         const uBiome = document.getElementById('updatebiomes');
         const uKind = document.getElementById('updatekind');
@@ -28,10 +28,25 @@ function updateEle(entry, id) {
         const uZ = document.getElementById('updatezcoord');
         const uComments = document.getElementById('updatecomment');
 
-        console.log(data[i][`${key}`])
+        const compareObj = {
+            name: `${uName}`,
+            biome: `${uBiome}`,
+            kind: `${uKind}`,
+            x: `${uX}`,
+            y: `${uX}`,
+            z: `${uZ}`,
+            comments: `${uComments}`
+        }
+        console.log(compareObj[`${key}`])
+        console.log(data[activeId][`${key}`])
         console.log(key)
     }
 }
+
+const submitUpdateBtn = document.getElementById('updatepoibtn')
+submitUpdateBtn.addEventListener('click', () => {
+    updateEle()
+})
 
 //show addpoi form
 const poiShow = document.getElementById("addpoibtn");
@@ -75,8 +90,8 @@ async function populateDiv() {
         updateEntryBtn.addEventListener('click', () => {
             const updatePoi = document.getElementById('updatepoi')
             showHiddenEle(updatePoi)
-            updateMe = id
-            console.log(updateMe)
+            activeId = id
+            console.log(activeId)
         })
         entryDiv.append(updateEntryBtn)
         const deleteEntryBtn = document.createElement('button');
