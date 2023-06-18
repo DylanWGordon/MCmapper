@@ -20,7 +20,7 @@ async function deleteEle(ele, id) {
 
 async function updateEle(entry, id) {
     const data = await singleloader()
-    console.log(data)
+    const reqBody = {}
     for (let key in data) {
         //uKeys
         const uName = document.getElementById('updatepoiname').value;
@@ -40,12 +40,14 @@ async function updateEle(entry, id) {
             z: `${uZ}`,
             comments: `${uComments}`
         }
-        console.log(compareObj)
-        console.log(compareObj[`${key}`])
-        console.log(data[`${key}`])
-        console.log(key)
+
+        if (compareObj[`${key}`] !== '' || undefined) {
+            if (data[`${key}`] !== compareObj[`${key}`]) {
+                reqBody[`${key}`] = compareObj[`${key}`]
+            }
+        }
     }
-    console.log('hit')
+    console.log(reqBody)
 }
 
 const submitUpdateBtn = document.getElementById('updatepoibtn')
