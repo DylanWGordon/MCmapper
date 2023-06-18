@@ -19,9 +19,9 @@ async function deleteEle(ele, id) {
 }
 
 async function updateEle(entry, id) {
-    const data = await loader()
+    const data = await singleloader()
     console.log(data)
-    for (let key in data[activeId]) {
+    for (let key in data) {
         const uName = document.getElementById('updatepoiname');
         const uBiome = document.getElementById('updatebiomes');
         const uKind = document.getElementById('updatekind');
@@ -40,7 +40,7 @@ async function updateEle(entry, id) {
             comments: `${uComments}`
         }
         console.log(compareObj[`${key}`])
-        console.log(data[activeId][`${key}`])
+        console.log(data[`${key}`])
         console.log(key)
     }
     console.log('hit')
@@ -62,6 +62,12 @@ poiShow.addEventListener('click', () => {
 //update data func
 async function loader() {
     const fetchPromise = await fetch(`/poi`);
+    const response = await fetchPromise.json()
+    return response
+}
+
+async function singleloader() {
+    const fetchPromise = await fetch(`/poi/${activeId}`);
     const response = await fetchPromise.json()
     return response
 }
