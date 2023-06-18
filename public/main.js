@@ -22,13 +22,14 @@ async function updateEle(entry, id) {
     const data = await singleloader()
     console.log(data)
     for (let key in data) {
-        const uName = document.getElementById('updatepoiname');
-        const uBiome = document.getElementById('updatebiomes');
-        const uKind = document.getElementById('updatekind');
-        const uX = document.getElementById('updatexcoord');
-        const uY = document.getElementById('updateycoord');
-        const uZ = document.getElementById('updatezcoord');
-        const uComments = document.getElementById('updatecomment');
+        //uKeys
+        const uName = document.getElementById('updatepoiname').value;
+        const uBiome = document.getElementById('updatebiomes').value;
+        const uKind = document.getElementById('updatekind').value;
+        const uX = document.getElementById('updatexcoord').value;
+        const uY = document.getElementById('updateycoord').value;
+        const uZ = document.getElementById('updatezcoord').value;
+        const uComments = document.getElementById('updatecomment').value;
 
         const compareObj = {
             name: `${uName}`,
