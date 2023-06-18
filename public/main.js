@@ -58,14 +58,14 @@ async function populateDiv() {
         updateEntryBtn.addEventListener('click', () => {
             function updateEle(entry, id) {
                 for (let key in data[i]) {
-                    const uName = document.getElementById('updatepoiname');
-                    const uBiome = document.getElementById('updatebiomes');
-                    const uKind = document.getElementById('updatekind');
-                    const uX = document.getElementById('updatexcoord');
-                    const uY = document.getElementById('updateycoord');
-                    const uZ = document.getElementById('updatezcoord');
-                    const uComments = document.getElementById('updatecomment');
-                    console.log(data[i].key)
+                    // const uName = document.getElementById('updatepoiname');
+                    // const uBiome = document.getElementById('updatebiomes');
+                    // const uKind = document.getElementById('updatekind');
+                    // const uX = document.getElementById('updatexcoord');
+                    // const uY = document.getElementById('updateycoord');
+                    // const uZ = document.getElementById('updatezcoord');
+                    // const uComments = document.getElementById('updatecomment');
+                    console.log(key)
                 }
             }
         })
