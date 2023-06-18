@@ -65,6 +65,9 @@ async function populateDiv() {
                     // const uY = document.getElementById('updateycoord');
                     // const uZ = document.getElementById('updatezcoord');
                     // const uComments = document.getElementById('updatecomment');
+                    console.log(data)
+                    console.log(data[i])
+                    console.log('hit')
                     console.log(key)
                 }
             }
