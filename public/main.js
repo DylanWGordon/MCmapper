@@ -47,7 +47,7 @@ async function updateEle(entry, id) {
             }
         }
     }
-    const response = await fetch(`/poi/${activId}`, {
+    const response = await fetch(`/poi/${activeId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
