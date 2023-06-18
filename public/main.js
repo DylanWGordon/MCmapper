@@ -29,7 +29,7 @@ async function updateEle(entry, id) {
         const uX = document.getElementById('updatexcoord').value;
         const uY = document.getElementById('updateycoord').value;
         const uZ = document.getElementById('updatezcoord').value;
-        const uComments = document.getElementById('updatecomment').value;
+        const uComments = document.getElementById('updatecomments').value;
 
         const compareObj = {
             name: `${uName}`,
