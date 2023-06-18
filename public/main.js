@@ -25,7 +25,7 @@ async function updateEle(entry, id) {
         //uKeys
         const uName = document.getElementById('updatepoiname').value;
         const uBiome = document.getElementById('updatebiomes').value;
-        const uKind = document.getElementById('updatekind').value;
+        const uKind = document.getElementById('updateKind').value;
         const uX = document.getElementById('updatexcoord').value;
         const uY = document.getElementById('updateycoord').value;
         const uZ = document.getElementById('updatezcoord').value;
@@ -40,6 +40,7 @@ async function updateEle(entry, id) {
             z: `${uZ}`,
             comments: `${uComments}`
         }
+        console.log(compareObj)
         console.log(compareObj[`${key}`])
         console.log(data[`${key}`])
         console.log(key)
