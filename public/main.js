@@ -53,6 +53,22 @@ async function populateDiv() {
 
         entryDiv.append(entry)
         tableDiv.append(entryDiv)
+        const updateEntryBtn = document.createElement('button')
+        updateEntryBtn.classList.add('updateBtn');
+        updateEntryBtn.addEventListener('click', () => {
+            function updateEle(entry, id) {
+                for (let key in data[i]) {
+                    const uName = document.getElementById('updatepoiname');
+                    const uBiome = document.getElementById('updatebiomes');
+                    const uKind = document.getElementById('updatekind');
+                    const uX = document.getElementById('updatexcoord');
+                    const uY = document.getElementById('updateycoord');
+                    const uZ = document.getElementById('updatezcoord');
+                    const uComments = document.getElementById('updatecomment');
+                    console.log(data[i].key)
+                }
+            }
+        })
         const deleteEntryBtn = document.createElement('button');
         deleteEntryBtn.classList.add('deleteBtn');
         deleteEntryBtn.addEventListener('click', () => {
