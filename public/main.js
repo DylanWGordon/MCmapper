@@ -18,7 +18,8 @@ async function deleteEle(ele, id) {
     console.log(response)
 }
 
-function updateEle(entry, id) {
+async function updateEle(entry, id) {
+    const data = await loader()
     for (let key in data[activeId]) {
         const uName = document.getElementById('updatepoiname');
         const uBiome = document.getElementById('updatebiomes');
