@@ -1,5 +1,7 @@
 // const API_URL = 'https://mcmap-webservice.onrender.com';
 
+
+let updateMe = 0
 function showHiddenEle(ele) {
     if (ele.style.display !== 'flex') {
         ele.style.display = 'flex'
@@ -14,6 +16,21 @@ async function deleteEle(ele, id) {
     })
     parent.removeChild(ele)
     console.log(response)
+}
+
+function updateEle(entry, id) {
+    for (let key in data[i]) {
+        const uName = document.getElementById('updatepoiname');
+        const uBiome = document.getElementById('updatebiomes');
+        const uKind = document.getElementById('updatekind');
+        const uX = document.getElementById('updatexcoord');
+        const uY = document.getElementById('updateycoord');
+        const uZ = document.getElementById('updatezcoord');
+        const uComments = document.getElementById('updatecomment');
+
+        console.log(data[i][`${key}`])
+        console.log(key)
+    }
 }
 
 //show addpoi form
@@ -56,20 +73,10 @@ async function populateDiv() {
         const updateEntryBtn = document.createElement('button')
         updateEntryBtn.classList.add('updateBtn');
         updateEntryBtn.addEventListener('click', () => {
-            function updateEle(entry, id) {
-                for (let key in data[i]) {
-                    const uName = document.getElementById('updatepoiname');
-                    const uBiome = document.getElementById('updatebiomes');
-                    const uKind = document.getElementById('updatekind');
-                    const uX = document.getElementById('updatexcoord');
-                    const uY = document.getElementById('updateycoord');
-                    const uZ = document.getElementById('updatezcoord');
-                    const uComments = document.getElementById('updatecomment');
-                    console.log(data[i][`${key}`])
-                    console.log(key)
-                }
-            }
-            updateEle()
+            const updatePoi = document.getElementById('updatepoi')
+            showHiddenEle(updatePoi)
+            updateMe = id
+            console.log(updateMe)
         })
         entryDiv.append(updateEntryBtn)
         const deleteEntryBtn = document.createElement('button');
