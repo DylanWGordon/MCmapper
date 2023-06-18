@@ -69,6 +69,7 @@ async function populateDiv() {
                 }
             }
         })
+        entryDiv.append(updateEntryBtn)
         const deleteEntryBtn = document.createElement('button');
         deleteEntryBtn.classList.add('deleteBtn');
         deleteEntryBtn.addEventListener('click', () => {
