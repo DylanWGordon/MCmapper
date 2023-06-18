@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    <div class="header"></div>
+    <div class="pages">
+        <button type="button" id="addpoibtn"></button>
+    </div>
     <div class="addform" id="addpoi">
         <form>
             <fieldset>
@@ -128,8 +132,8 @@
                 <label for="comment">Comments:</label>
                 <textarea name="comments" rows="10" cols="40" id="comment"></textarea>
                 <br>
-                <label for="sumbitpoi">Add new poi:</label>
-                <input type="submit" id="submitpoi">
+                <label for="submitpoi">Add new poi:</label>
+                <input type="button" id="submitpoi">
             </fieldset>
         </form>
     </div>
@@ -144,10 +148,13 @@
                 <label for="creator">World creator:</label>
                 <input type="text" id="creator">
                 <br>
-                <label for="submitworld">Add new world:</label>
-                <input type="submit" id="submitWorld">
+                <label for="submitWorld">Add new world:</label>
+                <input type="button" id="submitWorld">
             </fieldset>
         </form>
+    </div>
+    <div id="populateMe">
+
     </div>
 
 </body>
