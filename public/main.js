@@ -43,11 +43,18 @@ async function updateEle(entry, id) {
 
         if (compareObj[`${key}`] !== '' || undefined) {
             if (data[`${key}`] !== compareObj[`${key}`]) {
-                reqBody[`${key}`] = compareObj[`${key}`]
+                reqBody[`"${key}"`] = compareObj[`"${key}"`]
             }
         }
     }
-    console.log(reqBody)
+    const response = await fetch(`/poi/${activId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(reqBody),
+    })
+    return response.json
 }
 
 const submitUpdateBtn = document.getElementById('updatepoibtn')
@@ -129,7 +136,7 @@ clickme.addEventListener('click', async () => {
     const x = parseInt(document.getElementById('xcoord').value);
     const y = parseInt(document.getElementById('ycoord').value);
     const z = parseInt(document.getElementById('zcoord').value);
-    const comment = document.getElementById('comment').value;
+    const comment = document.getElementById('comments').value;
     const postBody = {
         "name": name,
         "biome": biome,
