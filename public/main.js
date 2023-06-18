@@ -20,6 +20,7 @@ async function deleteEle(ele, id) {
 
 async function updateEle(entry, id) {
     const data = await loader()
+    console.log(data)
     for (let key in data[activeId]) {
         const uName = document.getElementById('updatepoiname');
         const uBiome = document.getElementById('updatebiomes');
@@ -42,11 +43,12 @@ async function updateEle(entry, id) {
         console.log(data[activeId][`${key}`])
         console.log(key)
     }
+    console.log('hit')
 }
 
 const submitUpdateBtn = document.getElementById('updatepoibtn')
-submitUpdateBtn.addEventListener('click', () => {
-    updateEle()
+submitUpdateBtn.addEventListener('click', async () => {
+    await updateEle()
 })
 
 //show addpoi form
