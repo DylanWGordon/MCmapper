@@ -19,7 +19,7 @@ app.use(express.static("public"));
 //get all poi Rv1.3
 app.get("/poi", async (req, res) => {
     try {
-        const result = await client.query(`select name, biome, kind, x, y, z, comments FROM poi`)
+        const result = await client.query(`SELECT * FROM poi`)
         res.json(result.rows)
     } catch (err) {
         console.error(err);

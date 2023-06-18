@@ -6,6 +6,14 @@ function showHiddenEle(ele) {
     }
 }
 
+async function deleteEle(ele) {
+    console.log(ele)
+    // const response = await fetch(`${API_URL}/poi/${id}`, {
+    //     method: "DELETE"
+    // })
+    // console.log(response)
+}
+
 //show addpoi form
 const poiShow = document.getElementById("addpoibtn");
 const addPoiDiv = document.getElementById("addpoi")
@@ -25,12 +33,21 @@ async function loader() {
 async function populateDiv() {
     const tableDiv = document.getElementById('populateMe');
     const data = await loader()
+    console.log(data)
     tableDiv.innerHTML = '';
     for (let i = 0; i < data.length; i++) {
 
+        const entryDiv = document.createElement('div')
         const entry = document.createElement('p')
         entry.textContent = JSON.stringify(data[i]);
-        tableDiv.append(entry)
+        entryDiv.append(entry)
+        tableDiv.append(entryDiv)
+        const deleteEntryBtn = document.createElement('button');
+        deleteEntryBtn.classList.add('deleteBtn');
+        deleteEntryBtn.addEventListener('click', async () => {
+            await deleteEle(entryDiv)
+        })
+        tableDiv.append(deleteEntryBtn)
     }
 }
 populateDiv()
@@ -55,6 +72,7 @@ clickme.addEventListener('click', async () => {
         "z": z,
         "comments": comment,
     }
+    //Function to post
     async function postData() {
         const response = await fetch(`${API_URL}/poi`, {
             method: "POST",
@@ -69,4 +87,6 @@ clickme.addEventListener('click', async () => {
     data = await loader();
     populateDiv()
 })
+
+//delete one entry
 
