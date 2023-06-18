@@ -71,6 +71,7 @@ async function populateDiv() {
                     console.log(key)
                 }
             }
+            updateEle()
         })
         entryDiv.append(updateEntryBtn)
         const deleteEntryBtn = document.createElement('button');
