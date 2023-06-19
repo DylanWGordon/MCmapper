@@ -49,15 +49,14 @@ async function updateEle(entry, id) {
     }
     console.log(reqBody)
     console.log(JSON.stringify(reqBody))
-    // const response = await fetch(`/poi/${activeId}`, {
-    //     method: "PATCH",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: reqBody,
-    // })
-    // const output = await response.json();
-    // return output
+    const response = await fetch(`/poi/${activeId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: reqBody,
+    })
+    return response
 }
 
 const submitUpdateBtn = document.getElementById('updatepoibtn')
