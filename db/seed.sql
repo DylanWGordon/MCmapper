@@ -6,7 +6,7 @@ INSERT INTO poi(name, biome, kind, x, y, z, comments) VALUES ('Nariton Village',
 INSERT INTO poi(name, biome, kind, x, y, z, comments) VALUES ('The Non Village', 'changeme', 'village', -1007, 74, 836, '2 houses, fountain, active golem.. but no villagers?');
 
 INSERT INTO poi(name, biome, kind, x, y, z, comments) VALUES ('Squid Lake', 'Frozen Ocean', 'Other', 50, -20, 10, '');
--- 'Tundra Time! Look at all the squids!'
+-- ''
 INSERT INTO poi(name, biome, kind, x, y, z, comments) VALUES ('The Ghost Ship of Abbadon', 'Frozen Ocean', 'Shipwreck', 50, -123, 44, '');
 -- `Spooky ship! Strange dark energy hangs around it. Scared me so bad I spilt my monster on the keyboard. Had to dry it out and everything. Did you know that rice trick doesn't even work for electronics? It just helps additional moisture -not- get into the container, not draw it out! Jeez.`
 INSERT INTO poi(name, biome, kind, x, y, z, comments) VALUES ('Boss Squid?!', 'Deep Frozen Ocean', 'Other', 50, -270, 28, '');
