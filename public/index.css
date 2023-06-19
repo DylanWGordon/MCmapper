@@ -4,8 +4,13 @@ body {
 
 .header {
     height: 10em;
+    width: 100dvw;
     display: flex;
     background: darkgray;
+}
+
+#logo {
+    height: 8em;
 }
 
 div.addform {
