@@ -55,7 +55,7 @@ async function updateEle(entry, id) {
         body: JSON.stringify(reqBody),
     })
     console.log(response)
-    console.log(response.body)
+    console.log(response.body.json)
     return response.json
 }
 
