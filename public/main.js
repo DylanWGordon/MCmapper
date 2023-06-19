@@ -63,6 +63,8 @@ async function updateEle(entry, id) {
 const submitUpdateBtn = document.getElementById('updatepoibtn')
 submitUpdateBtn.addEventListener('click', async () => {
     await updateEle()
+    data = await loader()
+    populateDiv()
 })
 
 //show addpoi form
