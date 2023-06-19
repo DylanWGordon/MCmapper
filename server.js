@@ -109,8 +109,8 @@ app.patch('/poi/:id', async (req, res) => {
     }
     sqlString += inputs;
     sqlString += ' WHERE id = ' + '\'' + id + '\' RETURNING *';
-    console.log(sqlString)
     try {
+        console.log(sqlString)
         const result = await client.query(sqlString);
         if (result.rowCount === '0') {
             res.status(404).send('Not Found')
@@ -118,6 +118,7 @@ app.patch('/poi/:id', async (req, res) => {
             res.json(result.rows[0])
         }
     } catch (err) {
+        console.log(sqlString)
         console.error(err);
         res.status(500).send('Internal Server Error')
     }
