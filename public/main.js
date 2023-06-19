@@ -41,7 +41,7 @@ async function updateEle(entry, id) {
             comments: `${uComments}`
         }
 
-        if (compareObj[`${key}`] !== ('' || undefined)) {
+        if (compareObj[`${key}`] !== '' || undefined) {
             if (data[`${key}`] !== compareObj[`${key}`]) {
                 reqBody[`"${key}"`] = compareObj[`${key}`]
             }
