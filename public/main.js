@@ -52,11 +52,11 @@ async function updateEle(entry, id) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(reqBody),
+        body: reqBody,
     })
     console.log(response)
     console.log(JSON.parse(response.body))
-    return response.json
+    return response
 }
 
 const submitUpdateBtn = document.getElementById('updatepoibtn')
