@@ -54,9 +54,8 @@ async function updateEle(entry, id) {
         },
         body: reqBody,
     })
-    console.log(response)
-    console.log(JSON.parse(response.body))
-    return response
+    const output = await response.json();
+    return output
 }
 
 const submitUpdateBtn = document.getElementById('updatepoibtn')
