@@ -63,7 +63,7 @@ async function updateEle(entry, id) {
 const submitUpdateBtn = document.getElementById('updatepoibtn')
 submitUpdateBtn.addEventListener('click', async () => {
     await updateEle()
-    data = await loader()
+    loader()
     populateDiv()
 })
 
@@ -121,9 +121,9 @@ async function populateDiv() {
         entryDiv.append(updateEntryBtn)
         const deleteEntryBtn = document.createElement('button');
         deleteEntryBtn.classList.add('deleteBtn');
-        deleteEntryBtn.addEventListener('click', () => {
+        deleteEntryBtn.addEventListener('click', async () => {
             deleteEle(entryDiv, id)
-            loader();
+            data = await loader();
             populateDiv()
         })
         entryDiv.append(deleteEntryBtn)
