@@ -43,7 +43,7 @@ async function updateEle(entry, id) {
 
         if (compareObj[`${key}`] !== '' || undefined) {
             if (data[`${key}`] !== compareObj[`${key}`]) {
-                reqBody[`"${key}"`] = compareObj[`"${key}"`]
+                reqBody[`"${key}"`] = compareObj[`${key}`]
             }
         }
     }
