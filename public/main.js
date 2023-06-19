@@ -56,6 +56,7 @@ async function updateEle(entry, id) {
         },
         body: reqBody,
     })
+    console.log(response)
     return response
 }
 
