@@ -109,6 +109,7 @@ app.patch('/poi/:id', async (req, res) => {
     }
     sqlString += inputs;
     sqlString += ' WHERE id = ' + '\'' + id + '\' RETURNING *';
+    console.log(sqlString)
     try {
         const result = await client.query(sqlString);
         if (result.rowCount === '0') {
