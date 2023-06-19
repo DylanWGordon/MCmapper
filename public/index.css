@@ -1,3 +1,13 @@
+body {
+    display: flex;
+}
+
+.header {
+    height: 10em;
+    display: flex;
+    background: darkgray;
+}
+
 div.addform {
     display: none;
 }
