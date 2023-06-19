@@ -47,15 +47,17 @@ async function updateEle(entry, id) {
             }
         }
     }
-    const response = await fetch(`/poi/${activeId}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: reqBody,
-    })
-    const output = await response.json();
-    return output
+    console.log(reqBody)
+    console.log(JSON.stringify(reqBody))
+    // const response = await fetch(`/poi/${activeId}`, {
+    //     method: "PATCH",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: reqBody,
+    // })
+    // const output = await response.json();
+    // return output
 }
 
 const submitUpdateBtn = document.getElementById('updatepoibtn')
