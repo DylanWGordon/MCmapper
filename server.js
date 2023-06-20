@@ -5,10 +5,10 @@ const { Pool } = pkg
 import cors from 'cors';
 import dotenv from 'dotenv'
 
-app.use(cors({ origin: '*' }))
 
 
 const app = express();
+app.use(cors({ origin: '*' }))
 dotenv.config();
 const PORT = process.env.PORT;
 const URL = process.env.DATABASE_URL;
