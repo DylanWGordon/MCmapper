@@ -215,7 +215,7 @@ function submitUpdate() {
             return response.json
         }
         const tableDiv = document.getElementById('populateMe')
-        showHiddenEle(tableDiv)
+        tableDiv.style.display = "flex";
         console.log(tableDiv)
         postData(postBody);
         data = await loader();
