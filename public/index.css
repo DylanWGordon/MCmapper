@@ -73,7 +73,8 @@ body {
 #addpoibtn {
     flex-shrink: 1;
     height: 21px;
-    justify-self: end;
+    justify-self: bottom;
+    font-size: 80%;
 }
 
 #logo {
