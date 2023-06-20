@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,6 +10,7 @@ body {
 }
 
 .header {
+    margin: 0;
     height: 10em;
     width: 100dvw;
     display: flex;
