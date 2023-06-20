@@ -43,6 +43,7 @@ body {
 
 #headerInfo {
     display: flex;
+    flex-direction: column;
 }
 
 #searchDiv {
