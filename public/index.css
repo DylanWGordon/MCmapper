@@ -20,13 +20,14 @@ body {
 
 .pageDiv {
     margin: 0;
-    height: 50%;
+    height: 100%;
     display: flex;
     justify-content: start;
 }
 
 #title {
     flex-shrink: 1;
+    font-family: Copperplate, "Copperplate Gothic Light", Garamond;
 }
 
 .header {
