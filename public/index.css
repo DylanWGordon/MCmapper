@@ -73,7 +73,7 @@ div.entryCard {
 
 .fieldSet {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 /* div#addworld {
