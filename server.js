@@ -2,7 +2,7 @@ import express from "express";
 import postgres from "postgres";
 import pkg from 'pg'
 const { Pool } = pkg
-import cors from cors;
+import cors from 'cors';
 import dotenv from 'dotenv'
 
 app.use(cors())
