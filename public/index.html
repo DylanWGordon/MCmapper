@@ -25,7 +25,7 @@
         <form class="modalForm" id="addForm">
             <fieldset class="fieldSet">
                 <legend>Add a new point of interest:</legend>
-                <label for="poiname">Name:</label>
+                <div id="addInputs"></div <label for="poiname">Name:</label>
                 <input type="text" id="poiname">
                 <br>
                 <label for="biomes">Biome:</label>
@@ -136,10 +136,15 @@
                 <input type="text" id="zcoord">
                 <br>
                 <label for="comments">Comments:</label>
+                <br>
                 <textarea name="comments" rows="10" cols="40" id="comments"></textarea>
                 <br>
                 <label for="submitpoi">Submit new POI:</label>
                 <button type="button" id="submitpoi"> Add</button>
+                <div id="addCloseDiv">
+                    <button type="button" id="addCloseBtn">x</button>
+                </div>
+            </fieldset>
             </fieldset>
         </form>
     </div>
@@ -262,6 +267,7 @@
                 <input type="text" id="updatezcoord">
                 <br>
                 <label for="updatecomments">Comments:</label>
+                <br>
                 <textarea name="comments" rows="10" cols="40" id="updatecomments"></textarea>
                 <br>
                 <label for="updatepoibtn">Update POI:</label>
