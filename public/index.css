@@ -17,6 +17,7 @@ body {
     flex-direction: row;
     background: darkgray;
     align-items: end;
+    background-image: url("loop.png")
 }
 
 #searchDiv {
