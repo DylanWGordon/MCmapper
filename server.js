@@ -5,7 +5,8 @@ const { Pool } = pkg
 import cors from 'cors';
 import dotenv from 'dotenv'
 
-app.use(cors())
+app.use(cors({ origin: '*' }))
+
 
 const app = express();
 dotenv.config();
