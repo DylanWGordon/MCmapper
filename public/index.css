@@ -25,6 +25,10 @@ body {
     justify-content: start;
 }
 
+#title {
+    flex-shrink: 1;
+}
+
 .header {
     margin: 0;
     height: 10em;
@@ -43,7 +47,16 @@ body {
     flex-basis: 150px;
     justify-self: end;
     justify-content: end;
+}
 
+#searchBar {
+    flex-basis: 200px;
+    flex-shrink: 1;
+}
+
+#searchBtn {
+    flex-basis: 60px;
+    flex-shrink: 1;
 }
 
 #logo {
