@@ -1,12 +1,47 @@
 // const API_URL = 'https://mcmap-webservice.onrender.com';
 
-//Active id and reveal element function
+//Active id
 let activeId = 0
+
+
+
+
+
+//show element func
 function showHiddenEle(ele) {
     if (ele.style.display !== 'flex') {
         ele.style.display = 'flex'
     }
+    const tableDiv = document.getElementById('populateMe')
+    tableDiv.style.display = "none"
 }
+
+
+
+//Close Button Event Listeners
+function closeBtnEvent() {
+    function closeBtnFunc(ele) {
+        ele.style.display = "none";
+        const tableDiv = document.getElementById('populateMe');
+        tableDiv.style.display = "flex"
+    }
+    function closeEvent() {
+        const closeAdd = document.getElementById('addCloseBtn');
+        const closeUpdate = document.getElementById('closeUpdateBtn');
+        closeUpdate.addEventListener('click', () => {
+            const updatePoi = document.getElementById('updatepoi')
+            closeBtnFunc(updatePoi)
+        })
+        closeAdd.addEventListener('click', () => {
+            const addPoiDiv = document.getElementById("addpoi")
+            closeBtnFunc(addPoiDiv)
+        })
+    }
+    closeEvent()
+}
+closeBtnEvent()
+
+
 
 
 //delete function
@@ -19,6 +54,8 @@ async function deleteEle(ele, id) {
     parent.removeChild(ele)
     console.log(response)
 }
+
+
 //update function
 async function updateEle(entry, id) {
     const data = await singleloader()
@@ -63,22 +100,29 @@ async function updateEle(entry, id) {
 }
 
 //Update Btn Event Listener
-const submitUpdateBtn = document.getElementById('updatepoibtn')
-submitUpdateBtn.addEventListener('click', async () => {
-    await updateEle()
-    loader()
-    populateDiv()
-    const updatePoiDiv = document.getElementById('updatepoi')
-    updatePoiDiv.style.display = 'none';
-})
+function updateOpenEvent() {
+    const submitUpdateBtn = document.getElementById('updatepoibtn')
+    submitUpdateBtn.addEventListener('click', async () => {
+        await updateEle()
+        loader()
+        populateDiv()
+        const updatePoiDiv = document.getElementById('updatepoi')
+        updatePoiDiv.style.display = 'none';
+        const tableDiv = document.getElementById(populateMe)
+        tableDiv.style.display = "flex"
+    })
+}
+updateOpenEvent()
 
 //show addpoi form
-const poiShow = document.getElementById("addpoibtn");
-const addPoiDiv = document.getElementById("addpoi")
-poiShow.addEventListener('click', () => {
-    showHiddenEle(addPoiDiv)
-})
-console.log('Bang')
+function openAddForm() {
+    const poiShow = document.getElementById("addpoibtn");
+    poiShow.addEventListener('click', () => {
+        const addPoiDiv = document.getElementById("addpoi")
+        showHiddenEle(addPoiDiv)
+    })
+}
+openAddForm()
 
 
 //Reload data funcs
@@ -111,8 +155,6 @@ async function populateDiv() {
         <p>Comments: <br>
         ${data[i].comments}</p>
         `;
-
-
         entryDiv.append(entry)
         tableDiv.append(entryDiv)
         const updateEntryBtn = document.createElement('button')
@@ -136,45 +178,54 @@ async function populateDiv() {
         entryDiv.append(deleteEntryBtn)
     }
 }
+
+
+// submit event
+function submitUpdate() {
+    const submitBtn = document.getElementById("submitpoi");
+    submitBtn.addEventListener('click', async () => {
+        const name = document.querySelector('#poiname').value;
+        const biome = document.getElementById('biomes').value;
+        const kind = document.getElementById('kind').value;
+        const x = parseInt(document.getElementById('xcoord').value);
+        const y = parseInt(document.getElementById('ycoord').value);
+        const z = parseInt(document.getElementById('zcoord').value);
+        const comment = document.getElementById('comments').value;
+        const postBody = {
+            "name": name,
+            "biome": biome,
+            "kind": kind,
+            "x": x,
+            "y": y,
+            "z": z,
+            "comments": comment,
+        }
+        const addPoiDiv = document.getElementById('addpoi')
+        addPoiDiv.style.display = 'none';
+        //Function to post
+        async function postData() {
+            const response = await fetch(`/poi`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(postBody),
+            })
+            return response.json
+        }
+        postData();
+        data = await loader();
+        populateDiv()
+        const tableDiv = document.getElementById('populateMe')
+        tableDiv.style.display = "flex;"
+    })
+}
+submitUpdate()
+
+
 populateDiv()
 
 
-//Add 1 to poi on submit click
-const submitBtn = document.getElementById("submitpoi");
-submitBtn.addEventListener('click', async () => {
-    const name = document.querySelector('#poiname').value;
-    const biome = document.getElementById('biomes').value;
-    const kind = document.getElementById('kind').value;
-    const x = parseInt(document.getElementById('xcoord').value);
-    const y = parseInt(document.getElementById('ycoord').value);
-    const z = parseInt(document.getElementById('zcoord').value);
-    const comment = document.getElementById('comments').value;
-    const postBody = {
-        "name": name,
-        "biome": biome,
-        "kind": kind,
-        "x": x,
-        "y": y,
-        "z": z,
-        "comments": comment,
-    }
-    const addPoiDiv = document.getElementById('addpoi')
-    addPoiDiv.style.display = 'none';
-    //Function to post
-    async function postData() {
-        const response = await fetch(`/poi`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postBody),
-        })
-        return response.json
-    }
-    postData();
-    data = await loader();
-    populateDiv()
-})
 
 
 
