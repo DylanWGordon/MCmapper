@@ -1,3 +1,8 @@
+html {
+    width: 100dvw;
+    height: 100dvh;
+}
+
 body {
     margin: 1px;
     display: flex;
@@ -41,7 +46,7 @@ body {
     margin: 0;
     padding: 1.9em;
     width: 80dvw;
-    height: 70dvh;
+    height: 0dvh;
 
 }
 
@@ -75,6 +80,11 @@ div.addform {
     width: 33%;
 }
 
+
+#populateMe {
+    display: flex;
+    flex-direction: column;
+}
 
 
 div.entryCard {
