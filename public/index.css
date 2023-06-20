@@ -45,6 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 4;
+    justify-self: end;
 }
 
 #searchDiv {
