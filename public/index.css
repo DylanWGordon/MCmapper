@@ -3,6 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100dvw;
 }
 
 .pages {
@@ -12,7 +13,7 @@ body {
 .header {
     margin: 0;
     height: 10em;
-    width: 98dvw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     background: darkgray;
