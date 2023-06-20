@@ -14,7 +14,7 @@ body {
 #searchDiv {
     display: flex;
     justify-content: end;
-    justify-self: end;
+    align-self: end;
 
 }
 
