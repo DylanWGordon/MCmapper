@@ -36,6 +36,11 @@ body {
     justify-self: start;
 }
 
+.fieldSet {
+    display: flex;
+    flex-direction: row;
+}
+
 .modalForm {
     margin: 0;
     padding: 1.9em;
@@ -50,11 +55,13 @@ div.addform {
 
 #addInputs {
     flex: 3;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
 
 #addCloseDiv {
+    height: 100%;
     flex: 1;
     display: flex;
     flex-direction: row-reverse;
@@ -71,10 +78,7 @@ div.entryCard {
     padding: 1.3em;
 }
 
-.fieldSet {
-    display: flex;
-    flex-direction: column;
-}
+
 
 /* div#addworld {
     display: flex;
