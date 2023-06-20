@@ -18,7 +18,10 @@ body {
 }
 
 #searchDiv {
+    margin: 10px;
+    margin-top: 0;
     display: flex;
+    width: 20em;
     flex: 2;
     justify-self: end;
     justify-content: end;
@@ -34,6 +37,8 @@ div.addform {
 }
 
 div.entryCard {
+    margin: 0;
+    padding: 1.9em;
     border: 1px solid black;
     padding: 1.3em;
 }
