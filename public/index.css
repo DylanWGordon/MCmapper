@@ -41,6 +41,10 @@ body {
     background-image: url("loop.png")
 }
 
+#headerInfo {
+    display: flex;
+}
+
 #searchDiv {
     margin: 10px;
     margin-top: 0;
