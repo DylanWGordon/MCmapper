@@ -78,6 +78,7 @@ const addPoiDiv = document.getElementById("addpoi")
 poiShow.addEventListener('click', () => {
     showHiddenEle(addPoiDiv)
 })
+console.log('Bang')
 
 
 //Reload data funcs
