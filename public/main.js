@@ -183,6 +183,7 @@ async function populateDiv() {
 // submit event
 function submitUpdate() {
     const submitBtn = document.getElementById("submitpoi");
+    const postBody = {};
     submitBtn.addEventListener('click', async () => {
         const name = document.querySelector('#poiname').value;
         const biome = document.getElementById('biomes').value;
@@ -191,7 +192,7 @@ function submitUpdate() {
         const y = parseInt(document.getElementById('ycoord').value);
         const z = parseInt(document.getElementById('zcoord').value);
         const comment = document.getElementById('comments').value;
-        const postBody = {
+        postBody = {
             "name": name,
             "biome": biome,
             "kind": kind,
@@ -213,7 +214,7 @@ function submitUpdate() {
             })
             return response.json
         }
-        postData();
+        postData(postBody);
         data = await loader();
         populateDiv()
         const tableDiv = document.getElementById('populateMe')
