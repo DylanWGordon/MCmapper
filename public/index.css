@@ -3,6 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100dvh;
 }
 
 .pages {
@@ -89,6 +90,10 @@ div.entryCard {
 
 #updatepoibtn {
     width: 100px;
+}
+
+#comments {
+    min-height: 100px;
 }
 
 /* div#addworld {
