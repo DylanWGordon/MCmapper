@@ -4,21 +4,29 @@ body {
     align-items: center;
 }
 
+.pages {
+    flex: 1;
+}
+
 .header {
     height: 10em;
     width: 100dvw;
     display: flex;
+    flex-direction: row;
     background: darkgray;
 }
 
 #searchDiv {
     display: flex;
-    justify-content: end;
+    flex: 2;
     justify-self: end;
+    justify-content: end;
 
 }
 
 #logo {
+    display: flex;
+    flex: 1;
     height: 8em;
 }
 
