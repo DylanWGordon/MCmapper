@@ -67,12 +67,13 @@ body {
 
 #searchBtn {
     flex-basis: 60px;
-    flex-shrink: 1;
+    flex-shrink: 2;
 }
 
 #addpoibtn {
+    flex-shrink: 1;
     height: 21px;
-    align-self: end;
+    justify-self: end;
 }
 
 #logo {
