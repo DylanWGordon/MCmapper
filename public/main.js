@@ -86,8 +86,6 @@ async function updateEle(entry, id) {
             }
         }
     }
-    console.log(reqBody)
-    console.log(JSON.stringify(reqBody))
     const response = await fetch(`/poi/${activeId}`, {
         method: "PATCH",
         headers: {
@@ -95,7 +93,6 @@ async function updateEle(entry, id) {
         },
         body: JSON.stringify(reqBody),
     })
-    console.log(response)
     return response
 }
 
@@ -181,7 +178,7 @@ async function populateDiv() {
 
 
 // submit event
-function submitUpdate() {
+function submitEvents() {
     const submitBtn = document.getElementById("submitpoi");
     let postBody = {};
     submitBtn.addEventListener('click', async () => {
@@ -222,7 +219,7 @@ function submitUpdate() {
         populateDiv()
     })
 }
-submitUpdate()
+submitEvents()
 
 
 populateDiv()
