@@ -70,6 +70,10 @@ div.addform {
     align-items: start;
 }
 
+.shortInput {
+    width: 33%;
+}
+
 
 
 div.entryCard {
@@ -79,7 +83,13 @@ div.entryCard {
     padding: 1.3em;
 }
 
+#submitpoi {
+    width: 100px;
+}
 
+#updatepoibtn {
+    width: 100px;
+}
 
 /* div#addworld {
     display: flex;
