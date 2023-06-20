@@ -21,7 +21,7 @@ body {
     margin: 10px;
     margin-top: 0;
     display: flex;
-    width: 20em;
+    width: 10em;
     flex: 2;
     justify-self: end;
     justify-content: end;
@@ -30,6 +30,8 @@ body {
 
 #logo {
     height: 8em;
+    align-self: center;
+    justify-self: start;
 }
 
 div.addform {
