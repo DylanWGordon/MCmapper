@@ -213,11 +213,11 @@ function submitUpdate() {
             })
             return response.json
         }
-        postData(postBody);
+        postData();
         data = await loader();
         populateDiv()
         const tableDiv = document.getElementById('populateMe')
-        tableDiv.style.display = "flex;"
+        showHiddenEle(tableDiv)
     })
 }
 submitUpdate()
