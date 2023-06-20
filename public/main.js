@@ -68,6 +68,8 @@ submitUpdateBtn.addEventListener('click', async () => {
     await updateEle()
     loader()
     populateDiv()
+    const updatePoiDiv = document.getElementById('updatepoi')
+    updatePoiDiv.style.display = 'none';
 })
 
 //show addpoi form
@@ -155,6 +157,8 @@ submitBtn.addEventListener('click', async () => {
         "z": z,
         "comments": comment,
     }
+    const addPoiDiv = document.getElementById('addpoi')
+    addPoiDiv.style.display = 'none';
     //Function to post
     async function postData() {
         const response = await fetch(`/poi`, {
