@@ -26,6 +26,7 @@ body {
 }
 
 #title {
+    margin: 10px;
     flex-shrink: 1;
     font-family: Copperplate, "Copperplate Gothic Light", Garamond;
 }
@@ -61,11 +62,17 @@ body {
 #searchBar {
     flex-basis: 200px;
     flex-shrink: 1;
+    height: 21px;
 }
 
 #searchBtn {
     flex-basis: 60px;
     flex-shrink: 1;
+}
+
+#addpoibtn {
+    height: 21px;
+    align-self: end;
 }
 
 #logo {
