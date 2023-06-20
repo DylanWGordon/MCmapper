@@ -1,4 +1,4 @@
-// const API_URL = 'https://mcmap-webservice.onrender.com';
+const API_URL = 'https://mcmap-webservice.onrender.com';
 
 //Active id
 let activeId = 0
@@ -48,7 +48,7 @@ closeBtnEvent()
 async function deleteEle(ele, id) {
     const parent = ele.parentElement;
     console.log(id)
-    const response = await fetch(`/poi/${id}`, {
+    const response = await fetch(`${API_URL}/poi/${id}`, {
         method: "DELETE"
     })
     parent.removeChild(ele)
@@ -86,7 +86,7 @@ async function updateEle(entry, id) {
             }
         }
     }
-    const response = await fetch(`/poi/${activeId}`, {
+    const response = await fetch(`${API_URL}/poi/${activeId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -124,12 +124,12 @@ openAddForm()
 
 //Reload data funcs
 async function loader() {
-    const fetchPromise = await fetch(`/poi`);
+    const fetchPromise = await fetch(`${API_URL}/poi`);
     const response = await fetchPromise.json()
     return response
 }
 async function singleloader() {
-    const fetchPromise = await fetch(`/poi/${activeId}`);
+    const fetchPromise = await fetch(`${API_URL}/poi/${activeId}`);
     const response = await fetchPromise.json()
     return response
 }
@@ -202,7 +202,7 @@ function submitEvents() {
         addPoiDiv.style.display = 'none';
         //Function to post
         async function postData(body) {
-            const response = await fetch(`/poi`, {
+            const response = await fetch(`${API_URL}/poi`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
