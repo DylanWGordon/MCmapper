@@ -108,7 +108,7 @@ function updateOpenEvent() {
         populateDiv()
         const updatePoiDiv = document.getElementById('updatepoi')
         updatePoiDiv.style.display = 'none';
-        const tableDiv = document.getElementById(populateMe)
+        const tableDiv = document.getElementById('populateMe')
         tableDiv.style.display = "flex"
     })
 }
@@ -203,17 +203,17 @@ function submitUpdate() {
         const addPoiDiv = document.getElementById('addpoi')
         addPoiDiv.style.display = 'none';
         //Function to post
-        async function postData() {
+        async function postData(body) {
             const response = await fetch(`/poi`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(postBody),
+                body: JSON.stringify(body),
             })
             return response.json
         }
-        postData();
+        postData(postBody);
         data = await loader();
         populateDiv()
         const tableDiv = document.getElementById('populateMe')
