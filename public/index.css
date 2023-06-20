@@ -35,6 +35,14 @@ body {
     justify-self: start;
 }
 
+.modalForm {
+    margin: 0;
+    padding: 1.9em;
+    width: 80dvw;
+    height: 60dvh;
+
+}
+
 div.addform {
     display: none;
 }
