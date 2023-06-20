@@ -44,6 +44,7 @@ body {
 #headerInfo {
     display: flex;
     flex-direction: column;
+    flex-grow: 4;
 }
 
 #searchDiv {
@@ -51,7 +52,7 @@ body {
     margin-top: 0;
     flex-flow: row wrap;
     display: flex;
-    flex-basis: 260px;
+    /* flex-basis: 260px; */
     justify-self: end;
     justify-content: end;
 }
