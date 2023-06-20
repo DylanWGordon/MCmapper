@@ -214,12 +214,12 @@ function submitUpdate() {
             })
             return response.json
         }
+        const tableDiv = document.getElementById('populateMe')
         showHiddenEle(tableDiv)
+        console.log(tableDiv)
         postData(postBody);
         data = await loader();
         populateDiv()
-        const tableDiv = document.getElementById('populateMe')
-        console.log(tableDiv)
     })
 }
 submitUpdate()
