@@ -71,6 +71,11 @@ div.entryCard {
     padding: 1.3em;
 }
 
+.fieldSet {
+    display: flex;
+    flex-direction: row;
+}
+
 /* div#addworld {
     display: flex;
 } */
