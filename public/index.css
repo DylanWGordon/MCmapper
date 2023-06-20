@@ -67,7 +67,23 @@ div.addform {
     flex-direction: column;
 }
 
+#updateInputs {
+    flex: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 #addCloseDiv {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: end;
+    align-items: start;
+}
+
+#closeUpdateDiv {
     height: 100%;
     flex: 1;
     display: flex;
@@ -103,6 +119,10 @@ div.entryCard {
 }
 
 #comments {
+    min-height: 100px;
+}
+
+#updatecomments {
     min-height: 100px;
 }
 
