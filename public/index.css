@@ -36,18 +36,18 @@ body {
     justify-self: start;
 }
 
-.fieldSet {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
 .modalForm {
     margin: 0;
     padding: 1.9em;
     width: 80dvw;
     height: 60dvh;
 
+}
+
+.fieldSet {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 div.addform {
