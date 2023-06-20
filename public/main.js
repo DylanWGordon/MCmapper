@@ -183,7 +183,7 @@ async function populateDiv() {
 // submit event
 function submitUpdate() {
     const submitBtn = document.getElementById("submitpoi");
-    const postBody = {};
+    let postBody = {};
     submitBtn.addEventListener('click', async () => {
         const name = document.querySelector('#poiname').value;
         const biome = document.getElementById('biomes').value;
@@ -214,11 +214,12 @@ function submitUpdate() {
             })
             return response.json
         }
+        showHiddenEle(tableDiv)
         postData(postBody);
         data = await loader();
         populateDiv()
         const tableDiv = document.getElementById('populateMe')
-        showHiddenEle(tableDiv)
+        console.log(tableDiv)
     })
 }
 submitUpdate()
