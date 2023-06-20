@@ -11,6 +11,13 @@ body {
     background: darkgray;
 }
 
+#searchDiv {
+    display: flex;
+    justify-content: end;
+    justify-self: end;
+
+}
+
 #logo {
     height: 8em;
 }
