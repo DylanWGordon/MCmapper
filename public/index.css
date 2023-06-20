@@ -44,7 +44,7 @@ body {
 
 #headerInfo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 4;
     justify-self: end;
 }
