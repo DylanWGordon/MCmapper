@@ -12,7 +12,7 @@ body {
 .header {
     margin: 0;
     height: 10em;
-    width: 99dvw;
+    width: 98dvw;
     display: flex;
     flex-direction: row;
     background: darkgray;
@@ -41,6 +41,10 @@ body {
     width: 80dvw;
     height: 60dvh;
 
+}
+
+.fieldSet {
+    padding: 0;
 }
 
 div.addform {
