@@ -103,8 +103,8 @@ function updateOpenEvent() {
         await updateEle()
         loader()
         populateDiv()
-        const updatePoiDiv = document.getElementById('updatepoi')
-        updatePoiDiv.style.display = 'none';
+        const addPoiDiv = document.getElementById('addpoi')
+        addPoiDiv.style.display = 'none';
         const tableDiv = document.getElementById('populateMe')
         tableDiv.style.display = "flex"
     })
@@ -114,80 +114,42 @@ updateOpenEvent()
 //show addpoi form
 function openAddForm() {
     const poiShow = document.getElementById("addpoibtn");
+    const updateForm = document.getElementById("updatepoi")
     poiShow.addEventListener('click', () => {
         const addPoiDiv = document.getElementById("addpoi")
+        updateForm.style.display = 'none'
         showHiddenEle(addPoiDiv)
     })
 }
 openAddForm()
 
 
+
+
 //Reload data funcs
-async function loader() {
-    const fetchPromise = await fetch(`${API_URL}/poi`);
-    const response = await fetchPromise.json()
-    return response
-}
-
-async function searchData(){
-    const searchString = document.getElementById('searchBar').value
-    const searchValue = encodeURIComponent(searchString);
-    console.log(searchValue)
-    const fetchPromise = await fetch(`${API_URL}/search?${searchValue}`);
-    const response = await fetchPromise.json();
-    console.log(response)
-    return response
-}
-
 async function singleloader() {
     const fetchPromise = await fetch(`${API_URL}/poi/${activeId}`);
     const response = await fetchPromise.json()
     return response
 }
 
-//Fill Display div 
-async function populateDiv() {
-    const tableDiv = document.getElementById('populateMe');
-    let data = await loader()
-    tableDiv.innerHTML = '';
-    for (let i = 0; i < data.length; i++) {
-
-        const entryDiv = document.createElement('div')
-        entryDiv.classList.add('entryCard');
-        const entry = document.createElement('p')
-        const id = data[i]['id']
-        entry.innerHTML = `<h2>${data[i].name}</h2>
-        <p>Biome: ${data[i].biome}</p>
-        <p>Structure: ${data[i].kind}</p>
-        <p>Coordinates: ${data[i].x} ${data[i].y} ${data[i].z}</p>
-        <p>Comments: <br>
-        ${data[i].comments}</p>
-        `;
-        entryDiv.append(entry)
-        tableDiv.append(entryDiv)
-        const btnDiv = document.createElement('div')
-        const updateEntryBtn = document.createElement('button')
-        updateEntryBtn.textContent = "Update"
-        updateEntryBtn.classList.add('updateBtn', 'mc-button');
-        updateEntryBtn.addEventListener('click', () => {
-            const updatePoi = document.getElementById('updatepoi')
-            showHiddenEle(updatePoi)
-            activeId = id
-            console.log(activeId)
-        })
-        btnDiv.append(updateEntryBtn)
-        const deleteEntryBtn = document.createElement('button');
-        deleteEntryBtn.textContent = "Delete"
-        deleteEntryBtn.classList.add('deleteBtn', 'mc-button');
-        deleteEntryBtn.addEventListener('click', async () => {
-            deleteEle(entryDiv, id)
-            data = await loader();
-            populateDiv()
-        })
-        btnDiv.append(deleteEntryBtn)
-        entryDiv.append(btnDiv)
-    }
+async function loader() {
+    const fetchPromise = await fetch(`${API_URL}/poi`);
+    const response = await fetchPromise.json()
+    return response
 }
+
+
+
+// async function searchData(){
+//     const searchString = document.getElementById('searchBar').value
+//     const searchValue = encodeURIComponent(searchString);
+//     console.log(searchValue)
+//     const fetchPromise = await fetch(`${API_URL}/search?${searchValue}`);
+//     const response = await fetchPromise.json();
+//     console.log(response)
+//     return response
+// }
 
 //Search Func
 // async function searchResults() {
@@ -242,8 +204,55 @@ async function populateDiv() {
 // searchEvent()
 
 
-// submit event
-function submitEvents() {
+
+
+async function populateDiv() {//generate cards func
+    const tableDiv = document.getElementById('populateMe');
+    let data = await loader()
+    tableDiv.innerHTML = '';
+    for (let i = 0; i < data.length; i++) {
+
+        const entryDiv = document.createElement('div')
+        entryDiv.classList.add('entryCard');
+        const entry = document.createElement('p')
+        const id = data[i]['id']
+        entry.innerHTML = `<h2>${data[i].name}</h2>
+        <p>Biome: ${data[i].biome}</p>
+        <p>Structure: ${data[i].kind}</p>
+        <p>Coordinates: ${data[i].x} ${data[i].y} ${data[i].z}</p>
+        <p>Comments: <br>
+        ${data[i].comments}</p>
+        `;
+        entryDiv.append(entry)
+        tableDiv.append(entryDiv)
+        const btnDiv = document.createElement('div')
+        const updateEntryBtn = document.createElement('button')
+        updateEntryBtn.textContent = "Update"
+        updateEntryBtn.classList.add('updateBtn', 'mc-button');
+        updateEntryBtn.addEventListener('click', () => {
+            const updatePoi = document.getElementById('updatepoi')
+            showHiddenEle(updatePoi)
+            activeId = id
+            console.log(activeId)
+        })
+        btnDiv.append(updateEntryBtn)
+        const deleteEntryBtn = document.createElement('button');
+        deleteEntryBtn.textContent = "Delete"
+        deleteEntryBtn.classList.add('deleteBtn', 'mc-button');
+        deleteEntryBtn.addEventListener('click', async () => {
+            deleteEle(entryDiv, id)
+            data = await loader();
+            populateDiv()
+        })
+        btnDiv.append(deleteEntryBtn)
+        entryDiv.append(btnDiv)
+    }
+}
+
+
+
+
+function submitEvents() {//create event listeners for submit add and update buttons
     const submitBtn = document.getElementById("submitpoi");
     let postBody = {};
     submitBtn.addEventListener('click', async () => {
