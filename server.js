@@ -34,22 +34,22 @@ app.get("/poi", async (req, res) => {
 })
 
 //search 1 get many
-app.get(`/search?=term`, async (req, res) => {
+// app.get(`/search?=term`, async (req, res) => {
    
-    console.log(req.query)
-    let  { term } = req.query;
-    console.log(term)
-    const corVal = `%${term}`;
-    const val = `%${term}%`
-        try {
-            const result = await client.query(`SELECT * FROM poi WHERE name ILIKE $1 OR biome ILIKE $1 OR x::text ILIKE $2 OR y::text ILIKE $2 OR z::text ILIKE $2 OR comments ILIKE $1;`, [val, corVal])
-            res.json(result)
-        } catch (err) {
-            console.error(err);
-            res.status(500).send('Internal Server Error');
-            console.error('Internal Server Error')
-        }
-})
+//     console.log(req.query)
+//     let  { term } = req.query;
+//     console.log(term)
+//     const corVal = `%${term}`;
+//     const val = `%${term}%`
+//         try {
+//             const result = await client.query(`SELECT * FROM poi WHERE name ILIKE $1 OR biome ILIKE $1 OR x::text ILIKE $2 OR y::text ILIKE $2 OR z::text ILIKE $2 OR comments ILIKE $1;`, [val, corVal])
+//             res.json(result)
+//         } catch (err) {
+//             console.error(err);
+//             res.status(500).send('Internal Server Error');
+//             console.error('Internal Server Error')
+//         }
+// })
 
 
 

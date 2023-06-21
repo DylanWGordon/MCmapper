@@ -148,7 +148,7 @@ async function singleloader() {
 //Fill Display div 
 async function populateDiv() {
     const tableDiv = document.getElementById('populateMe');
-    const data = await loader()
+    let data = await loader()
     tableDiv.innerHTML = '';
     for (let i = 0; i < data.length; i++) {
 
@@ -190,56 +190,56 @@ async function populateDiv() {
 }
 
 //Search Func
-async function searchResults() {
-    const tableDiv = document.getElementById('populateMe');
-    const data = await searchData()
-    tableDiv.innerHTML = '';
-    for (let i = 0; i < data.length; i++) {
+// async function searchResults() {
+//     const tableDiv = document.getElementById('populateMe');
+//     const data = await searchData()
+//     tableDiv.innerHTML = '';
+//     for (let i = 0; i < data.length; i++) {
 
-        const entryDiv = document.createElement('div')
-        entryDiv.classList.add('entryCard');
-        const entry = document.createElement('p')
-        const id = data[i]['id']
-        entry.innerHTML = `<h2>${data[i].name}</h2>
-        <p>Biome: ${data[i].biome}</p>
-        <p>Structure: ${data[i].kind}</p>
-        <p>Coordinates: ${data[i].x} ${data[i].y} ${data[i].z}</p>
-        <p>Comments: <br>
-        ${data[i].comments}</p>
-        `;
-        entryDiv.append(entry)
-        tableDiv.append(entryDiv)
-        const btnDiv = document.createElement('div')
-        const updateEntryBtn = document.createElement('button')
-        updateEntryBtn.textContent = "Update"
-        updateEntryBtn.classList.add('updateBtn', 'mc-button');
-        updateEntryBtn.addEventListener('click', () => {
-            const updatePoi = document.getElementById('updatepoi')
-            showHiddenEle(updatePoi)
-            activeId = id
-            console.log(activeId)
-        })
-        btnDiv.append(updateEntryBtn)
-        const deleteEntryBtn = document.createElement('button');
-        deleteEntryBtn.textContent = "Delete"
-        deleteEntryBtn.classList.add('deleteBtn', 'mc-button');
-        deleteEntryBtn.addEventListener('click', async () => {
-            deleteEle(entryDiv, id)
-            data = await searchData();
-            populateDiv()
-        })
-        btnDiv.append(deleteEntryBtn)
-        entryDiv.append(btnDiv)
-    }
-}
+//         const entryDiv = document.createElement('div')
+//         entryDiv.classList.add('entryCard');
+//         const entry = document.createElement('p')
+//         const id = data[i]['id']
+//         entry.innerHTML = `<h2>${data[i].name}</h2>
+//         <p>Biome: ${data[i].biome}</p>
+//         <p>Structure: ${data[i].kind}</p>
+//         <p>Coordinates: ${data[i].x} ${data[i].y} ${data[i].z}</p>
+//         <p>Comments: <br>
+//         ${data[i].comments}</p>
+//         `;
+//         entryDiv.append(entry)
+//         tableDiv.append(entryDiv)
+//         const btnDiv = document.createElement('div')
+//         const updateEntryBtn = document.createElement('button')
+//         updateEntryBtn.textContent = "Update"
+//         updateEntryBtn.classList.add('updateBtn', 'mc-button');
+//         updateEntryBtn.addEventListener('click', () => {
+//             const updatePoi = document.getElementById('updatepoi')
+//             showHiddenEle(updatePoi)
+//             activeId = id
+//             console.log(activeId)
+//         })
+//         btnDiv.append(updateEntryBtn)
+//         const deleteEntryBtn = document.createElement('button');
+//         deleteEntryBtn.textContent = "Delete"
+//         deleteEntryBtn.classList.add('deleteBtn', 'mc-button');
+//         deleteEntryBtn.addEventListener('click', async () => {
+//             deleteEle(entryDiv, id)
+//             data = await searchData();
+//             populateDiv()
+//         })
+//         btnDiv.append(deleteEntryBtn)
+//         entryDiv.append(btnDiv)
+//     }
+// }
 
-function searchEvent(){
-const searchBtn = document.getElementById('searchBtn');
-searchBtn.addEventListener('click', ()=>{
-    searchResults()
-})
-}
-searchEvent()
+// function searchEvent(){
+// const searchBtn = document.getElementById('searchBtn');
+// searchBtn.addEventListener('click', ()=>{
+//     searchResults()
+// })
+// }
+// searchEvent()
 
 
 // submit event
