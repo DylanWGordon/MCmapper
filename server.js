@@ -34,7 +34,7 @@ app.get("/poi", async (req, res) => {
 })
 
 //search 1 get many
-app.get(`/search`, async (req, res) => {
+app.get(`/search?:term`, async (req, res) => {
     console.log(req)
     console.log(req.query)
     let { val } = req.query.term;
