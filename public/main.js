@@ -103,6 +103,8 @@ function updateOpenEvent() {
         await updateEle()
         loader()
         populateDiv()
+        const updatePoiDiv = document.getElementById('updatepoi')
+        updatePoiDiv.style.display = "none"
         const addPoiDiv = document.getElementById('addpoi')
         addPoiDiv.style.display = 'none';
         const tableDiv = document.getElementById('populateMe')
