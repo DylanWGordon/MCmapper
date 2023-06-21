@@ -40,7 +40,7 @@ app.get(`/search?:term`, async (req, res) => {
     let  { term } = req.params;
     console.log(term)
     const corVal = `%${term}`;
-    val = `%${term}%`
+    const val = `%${term}%`
         try {
             const result = await client.query(`SELECT * FROM poi WHERE name ILIKE $1 OR biome ILIKE $1 OR x::text ILIKE $2 OR y::text ILIKE $2 OR z::text ILIKE $2 OR comments ILIKE $1;`, [val, corVal])
             res.json(result)

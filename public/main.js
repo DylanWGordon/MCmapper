@@ -132,7 +132,7 @@ async function loader() {
 async function searchData(){
     const searchString = document.getElementById('searchBar').value
     const searchValue = encodeURIComponent(searchString);
-    
+    console.log(searchValue)
     const fetchPromise = await fetch(`${API_URL}/search?${searchValue}`);
     const response = await fetchPromise.json();
     console.log(response)
