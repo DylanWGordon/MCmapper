@@ -33,7 +33,7 @@ app.get("/poi", async (req, res) => {
     }
 })
 
-//get one poi R1v1.1
+//search 1 get many
 app.get(`/search`, async (req, res) => {
     console.log('hit')
     let { val } = req.query.term;
@@ -41,7 +41,7 @@ app.get(`/search`, async (req, res) => {
     const corVal = `'%${val}'`;
     val = `'%${val}%'`
         try {
-            const result = await client.query(`SELECT name, biome, kind, x, y, z, comments FROM poi WHERE name LIKE $1 OR biome LIKE $1 OR x LIKE $2 OR y LIKE $2 OR z LIKE $2 OR comments LIKE $1;`, [val, corVal])
+            const result = await client.query(`SELECT name, biome, kind, x, y, z, comments FROM poi WHERE name ILIKE $1 OR biome ILIKE $1 OR x ILIKE $2 OR y ILIKE $2 OR z ILIKE $2 OR comments ILIKE $1;`, [val, corVal])
             res.json(result.rows)
         } catch (err) {
             console.error(err);
