@@ -132,8 +132,8 @@ async function loader() {
 async function searchData(){
     const searchString = document.getElementById('searchBar').value
     const searchValue = encodeURIComponent(searchString);
-    const fetchPromise = await fetch(`${API_URL}/search?=${searchValue}`);
-    const response = await fetchPromise.json;
+    const fetchPromise = await fetch(`${API_URL}/poi?=${searchValue}`);
+    const response = await fetchPromise.json();
     return response
 }
 
@@ -234,6 +234,7 @@ async function searchResults() {
 function searchEvent(){
 const searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', ()=>{
+    console.log('hit')
     searchResults()
 })
 }

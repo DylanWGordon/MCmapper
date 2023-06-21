@@ -34,7 +34,8 @@ app.get("/poi", async (req, res) => {
 })
 
 //get one poi R1v1.1
-app.get(`/search?=:val`, async (req, res) => {
+app.get(`/poi?=:val`, async (req, res) => {
+    console.log('hit')
     let { val } = req.params
     const corVal = `%${val}`;
     val = `%${val}%`
