@@ -38,10 +38,10 @@ app.get(`/search`, async (req, res) => {
     console.log('hit')
     let { val } = req.query.term;
     console.log(val)
-    const corVal = `'%${val}'`;
-    val = `'%${val}%'`
+    const corVal = `%${val}`;
+    val = `%${val}%`
         try {
-            const result = await client.query(`SELECT name, biome, kind, x, y, z, comments FROM poi WHERE name ILIKE $1 OR biome ILIKE $1 OR x ILIKE $2 OR y ILIKE $2 OR z ILIKE $2 OR comments ILIKE $1;`, [val, corVal])
+            const result = await client.query(`SELECT * FROM poi WHERE name ILIKE $1 OR biome ILIKE $1 OR x::text ILIKE $2 OR y::text ILIKE $2 OR z::text ILIKE $2 OR comments ILIKE $1;`, [val, corVal])
             res.json(result.rows)
         } catch (err) {
             console.error(err);
