@@ -133,7 +133,7 @@ async function searchData(){
     const searchString = document.getElementById('searchBar').value
     const searchValue = encodeURIComponent(searchString);
     
-    const fetchPromise = await fetch(`${API_URL}/search?term=${searchValue}`, {});
+    const fetchPromise = await fetch(`${API_URL}/search?${searchValue}`, {});
     const response = await fetchPromise.json();
     console.log(response)
     return response
