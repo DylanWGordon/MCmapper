@@ -34,6 +34,23 @@ app.get("/poi", async (req, res) => {
 })
 
 //get one poi R1v1.1
+app.get(`/search?=:val`, async (req, res) => {
+    let { val } = req.params
+    const corVal = `%${val}`;
+    val = `%${val}%`
+        try {
+            const result = await client.query('SELECT name, biome, kind, x, y, z, comments FROM poi WHERE name LIKE = %$1% OR biome LIKE $1 OR x LIKE $2 OR y LIKE $2 OR z LIKE $2 OR comments LIKE $1;', [val, corVal])
+            res.json(result.rows[0])
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+            console.error('Internal Server Error')
+        }
+})
+
+
+
+//get one poi R1v1.1
 app.get(`/poi/:id`, async (req, res) => {
     const { id } = req.params;
     if (isNaN(Number.isInteger(id))) {
