@@ -34,10 +34,10 @@ app.get("/poi", async (req, res) => {
 })
 
 //search 1 get many
-app.get(`/search?:term`, async (req, res) => {
+app.get(`/search?=:term`, async (req, res) => {
    
-    console.log(req.params)
-    let  { term } = req.params;
+    console.log(req.query)
+    let  { term } = req.query;
     console.log(term)
     const corVal = `%${term}`;
     const val = `%${term}%`
