@@ -40,7 +40,7 @@ app.get(`/search/:val`, async (req, res) => {
     const corVal = `"%${val}"`;
     val = `"%${val}"%`
         try {
-            const result = await client.query('SELECT name, biome, kind, x, y, z, comments FROM poi WHERE name LIKE = %$1% OR biome LIKE $1 OR x LIKE $2 OR y LIKE $2 OR z LIKE $2 OR comments LIKE $1;', [val, corVal])
+            const result = await client.query('SELECT name, biome, kind, x, y, z, comments FROM poi WHERE name LIKE $1 OR biome LIKE $1 OR x LIKE $2 OR y LIKE $2 OR z LIKE $2 OR comments LIKE $1;', [val, corVal])
             res.json(result.rows[0])
         } catch (err) {
             console.error(err);
