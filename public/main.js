@@ -236,7 +236,6 @@ async function searchResults() {
 function searchEvent(){
 const searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', ()=>{
-    console.log('hit')
     searchResults()
 })
 }

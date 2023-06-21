@@ -35,14 +35,15 @@ app.get("/poi", async (req, res) => {
 
 //search 1 get many
 app.get(`/search`, async (req, res) => {
-    console.log('hit')
+    console.log(req)
+    console.log(req.query)
     let { val } = req.query.term;
     console.log(val)
     const corVal = `%${val}`;
     val = `%${val}%`
         try {
             const result = await client.query(`SELECT * FROM poi WHERE name ILIKE $1 OR biome ILIKE $1 OR x::text ILIKE $2 OR y::text ILIKE $2 OR z::text ILIKE $2 OR comments ILIKE $1;`, [val, corVal])
-            res.json(result.rows)
+            res.json(result)
         } catch (err) {
             console.error(err);
             res.status(500).send('Internal Server Error');
